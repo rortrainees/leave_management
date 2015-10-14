@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Resone:</strong>
+  <%= best_in_place @rest, :resone %>
+  <%#= best_in_place @rest.resone %>
+</p>
+<p>
+  <strong>Place:</strong>
+  <%= best_in_place @rest, :place %>
+</p>
+<p>
+  <strong>Start Date:</strong>
+  <%= @rest.start_date %>
+</p>
+
+<p>
+  <strong>End Date:</strong>
+  <%=  @rest.end_date %>
+</p>
+<p>
+  <strong>Join Date:</strong>
+  <%=  @rest.join_date %>
+</p>
+<p>
+  <strong>Department:</strong>
+  <%=  @rest.department %>
+</p>
+<p>
+  <strong>Contact:</strong>
+  <%=  @rest.contact %>
+</p>
+
+<p>
+  <strong>Employe:</strong>
+  <%=  @rest.employe.e_id  %>
+</p>
+
+<%= link_to 'Edit', edit_rest_path(@rest) %> |
+<%= link_to 'Back', rests_path %>

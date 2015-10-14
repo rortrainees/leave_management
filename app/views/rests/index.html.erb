@@ -1,0 +1,56 @@
+<% if employe_signed_in? %>
+  Logged in as  <strong>  <%= current_employe.email %></strong> </a><br>
+    
+
+  <%= link_to 'Edit profile', edit_employe_registration_path, :class => 'navbar-link' %> |
+  <%= link_to "Logout", destroy_employe_session_path, method: :delete, :class => 'navbar-link'  %>
+<% else %>
+  <%= link_to "Sign up", new_employe_registration_path, :class => 'navbar-link'  %> |
+  <%= link_to "Login", new_employe_session_path, :class => 'navbar-link'  %> 
+<%end%>
+
+<h2>Yours  leaves</h2>
+<h3><%= link_to 'Apply for leave' , new_rest_path %></h3>
+<table>
+  <thead>
+    <tr>
+      <th>Employe Id</th>&nbsp;
+      <th>Resone</th>&nbsp;
+      <th>Place</th>&nbsp;
+      <th>Start Date</th>&nbsp;
+      <th>End Date</th>&nbsp;
+      <th>Join Date</th>&nbsp;
+      <th>Department</th>&nbsp;
+      <th>Contact</th>&nbsp;
+      <th> Status</th>&nbsp;
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rests.each do |rest| %>
+      <tr>
+        <td><%= rest.employe.e_id %></td>
+        <td><%= rest.resone %></td>
+        <td><%= rest.place %></td>
+        <td><%= rest.start_date %></td>
+        <td><%= rest.end_date %></td>
+        <td><%= rest.join_date %></td>
+        <td><%= rest.department %></td>
+        <td><%= rest.contact %></td>
+        <td style="width:100px;color:blue"> <%= rest.status %></td><br>
+        <td ><% if rest.status == "pending"  %></td>
+        <td><%= link_to 'Edit', edit_rest_path(rest) %></td>
+        <td><%= link_to 'Destroy', rest, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        <td ><% if rest.status == "approve"  %></td>
+         <td style="width:100px;color:green"><h9>Your leave is Approved</h9></td>
+          <% elsif  rest.status == "disapprove"%>
+        <td style="width:100px;color:red"><h9>Your leave is Dispproved</h9></td>
+          <% end %>
+        
+         
+      </tr>
+    <% end %>
+  </tbody>
+</table>

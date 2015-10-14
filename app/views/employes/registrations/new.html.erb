@@ -1,0 +1,51 @@
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+   <div class="field">
+    <%= f.label :employe_Id %><br />
+    <%= f.text_field :e_id, autofocus: true %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+  
+    <%#= f.label :profile %>
+    <%#= f.text_field :profile, autofocus: true %>
+
+    <%#= f.label :designation %>
+    <%#= f.text_field :designation, autofocus: true %>
+  
+    <%#= f.label :contact %><br />
+    <%#= f.text_field :contact, autofocus: true %>
+  
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+  
+  <%#= f.label :role %>
+  <%#= f.select :role, options_for_select([["Employe", "employe"], ["Manager", "manager"]]) %>
+  <%#= f.select(:role, Employe.roles.keys.map {|role| [role.titleize,role]}) %>
+    <%#= f.submit 'Change Role', :class => 'button-xs' %>
+  
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%#= render "employes/shared/links" %>

@@ -1,0 +1,47 @@
+<%= form_for(@rest) do |f| %>
+  <% if @rest.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@rest.errors.count, "error") %> prohibited this rest from being saved:</h2>
+
+      <ul>
+      <% @rest.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.hidden_field :employe_id, :value => current_employe.id %>
+  <div class="field">
+    <%= f.label :resone %><br>
+    <%= f.text_field :resone, autofocus: true %>
+  </div>
+   <div class="field">
+    <%= f.label :place %><br>
+    <%= f.text_field :place, autofocus: true %>
+  </div>
+  <div class="field">
+    <%= f.label :start_date %><br>
+    <%= f.datetime_select :start_date %>
+  </div>
+  <div class="field">
+    <%= f.label :end_date %><br>
+    <%= f.datetime_select :end_date %>
+  </div>
+   <div class="field">
+    <%= f.label :join_date %><br>
+    <%= f.datetime_select :join_date %>
+  </div>
+   <div class="field">
+    <%= f.label :department %><br>
+    <%= f.select :department, options_for_select([["select", ""],'android','designing','java','php','ruby on rails','testing']) %>
+    <%#= f.select :department, options_for_select([["select", " "],["Android", "android"], ["Desginig", "designing"] ,["Java", "java"], ["Php", "php"], ["RoR", "ror"], ["Testing", "testing"]]) %>
+  </div>
+  <div class="field">
+    <%= f.label :contact %><br>
+    <%= f.text_field :contact %>
+  </div>
+ 
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
