@@ -3,7 +3,6 @@
 
           def applied_for_leave(rest)
             @rest = rest
-            
             mail(:to => " #{rest.employe.email}" , :subject => "Leave request by #{rest.employe.name}")
           end
 
